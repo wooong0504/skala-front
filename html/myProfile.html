@@ -1,43 +1,62 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <title>나의 프로필</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 프로필 페이지</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
+        <!-- 상단 헤더 영역 구조화 -->
+        <header>
+            <h1>👋 안녕하세요! 저를 소개합니다</h1>
+            <p>아래는 제가 선호하는 음식과 올해의 계획, 그리고 저를 표현하는 키워드들입니다.</p>
+        </header>
 
-    <h1>안녕하세요! 저를 소개합니다</h1>
-    <br>
-    <p>아래는 제가 좋아하는 것들과 올해의 계획, 그리고 저를 표현하는 단어들입니다.</p>
-    <br>
-    <h2>내가 좋아하는 음식</h2>
-    <br>
-    <ul>
-        <li>아이스 아메리카노</li>
-        <li>매콤한 떡볶이</li>
-        <li>달콤한 초콜릿 케이크</li> 
-    </ul>
+        <hr>
 
-    <hr>
+        <main>
+            <!-- 1. 선호하는 음식 섹션 (순서 없는 리스트 구조 유지) -->
+            <section class="profile-section">
+                <h2>🍗 내가 좋아하는 음식</h2>
+                <ul>
+                    <li>닭다리살 및 닭목살 구이 🍗</li>
+                    <li>신선한 달걀 요리 🍳</li>
+                    <li> 필터 커피 ☕</li>
+                </ul>
+            </section>
 
-    <h2>올해 할 일 </h2>
-    <ol>
-        <li>책읽기</li>
-        <li>운동</li>
-        <li>식단</li>
-    </ol>
+            <hr>
 
-    <hr>
+            <!-- 2. 올해 목표 섹션 (순서 있는 리스트 구조 유지) -->
+            <section class="profile-section">
+                <h2>📅 올해 주요 계획</h2>
+                <ol>
+                    <li>주 3회 웨이트 트레이닝 💪</li>
+                    <li>인클라인 트레드밀을 활용한 공복 유산소 🏃‍♂️</li>
+                    <li>데이터 엔지니어링 및 알고리즘 학습 💻</li>
+                </ol>
+            </section>
 
-    <h2>나를 설명하는 단어들</h2>
-    <dl>
-        <dt>호기심</dt>
-        <dd>~~</dd>
-        <dt>호기심</dt>
-        <dd>~~</dd>
-        <dt>호기심</dt>
-        <dd>~~</dd>
-    </dl>
+            <hr>
+
+            <!-- 3. 키워드 정의 섹션 (정의형 목록 dl 구조 완벽 유지) -->
+            <section class="profile-section">
+                <h2>✨ 나를 설명하는 단어들</h2>
+                <dl>
+                    <dt>🔍 논리성과 분석</dt>
+                    <dd>현상을 객관적으로 바라보고, 직관보다는 명확한 데이터와 논리적인 근거를 바탕으로 문제를 해결</dd>
+                    
+                    <dt>🏋️‍♂️ 성실한 루틴</dt>
+                    <dd>매일 정해진 목표를 달성하기 위해 타협하지 않고 묵묵히 실행에 옮기는 끈기와 꾸준함</dd>
+                    
+                    <dt>⚙️ 시스템 최적화</dt>
+                    <dd>단순히 겉으로 보이는 기능 구현을 넘어, 내부 프로세스를 효율적이고 군더더기 없이 구성</dd>
+                </dl>
+            </section>
+        </main>
     </div>
+    <script src="../script/theme.js"></script>
 </body>
 </html>

@@ -1,47 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap');
 
+/* ==========================================================================
+   기본 테마 설정 (기본 다크 모드)
+   ========================================================================== */
 body {
-    font-family: 'Hahmlet', sans-serif; /* 구글 폰트를 적용하고, 실패 시 기본 고딕체 사용 */
-    line-height: 1.2;                  /* 줄간격을 넓혀 가독성 확보 */
-    color: #bcbcbc;                  /* 너무 완전한 검은색(#000)보다 눈이 편한 짙은 회색 */
-    background-color: #000000;       /* 완전 흰색보다 부드러운 아이보리빛 미색 */
+    font-family: 'Hahmlet', sans-serif;
+    line-height: 1.2;
+    color: #bcbcbc;                  /* 가독성을 고려한 짙은 회색 텍스트 */
+    background-color: #000000;
     font-size: 15px;
     text-align: center;
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
         url('../media/bg_texture.jpg'); 
         
-    /* 2. 배경 화면 설정 고정 */
-    background-size: cover;         /* 화면에 사진이 꽉 차도록 확대/축소 */
-    background-position: center;    /* 사진 중심을 가운데로 고정 */
-    background-attachment: fixed;   /* 스크롤을 내려도 배경 이미지는 가만히 고정되도록 처리 (고급스러운 느낌) */
+    /* 배경 이미지 고정 레이아웃 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     
-    font-size: 15px;
     letter-spacing: -0.5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 테마 전환 부드럽게 */
 }
 
-/* 메인 제목 스타일 (h1) */
 h1 {
     font-weight: 900;
     color: #bcbcbc;
     font-size: 44px;
     padding-bottom: 12px;
-    border-bottom: 4px solid #bcbcbc; /* 굴지 않은 강한 블랙 선 */
+    border-bottom: 4px solid #bcbcbc;
     text-transform: uppercase;
 }
 
-/* 부제목 h2: 꽉 찬 한 줄 띠지 느낌 (주요 구역 구분) */
 h2 {
     font-weight: 700;
     color: #bcbcbc;
-    font-size: 24px;       /* 짙은 차콜/에이징된 블랙 배경 */
+    font-size: 24px;
     padding: 12px 20px;   
     margin-top: 45px;
     margin-bottom: 20px;
 }
 
-/* 소제목 h3: 말머리 기호(💡/📌 등)를 깔끔하게 강조하는 밑줄 형태 */
 h3 {
     font-weight: 700;
     color: #bcbcbc;
@@ -52,158 +52,152 @@ h3 {
     margin-bottom: 15px;
 }
 
-/* 본문 텍스트 링크 스타일 */
 a {
-    color: #828282;         /* 링크는 선명한 파란색 */
-    text-decoration: none;  /* 밑줄 제거하여 깔끔하게 처리 */
+    color: #828282;
+    text-decoration: none;
 }
 
-/* 마우스를 올렸을 때만 밑줄이 생기도록 설정 (Hover 가상 클래스 맛보기) */
 a:hover {
     text-decoration: underline;
 }
 
 /* ==========================================================================
-   [미션 2] 실습과제 박스 모델의 이해
+   [미션 2] 박스 모델 실습 (여행 카드 및 테이블)
    ========================================================================== */
-
-/* 박스 크기 계산법 고정 */
 * {
     box-sizing: border-box;
 }
 
-/* 전체 화면 폭 제한 및 중앙 정렬 (.container) */
 .container {
-    max-width: 1200px;       /* 화면의 최대 가로 폭을 800px로 제한 */
-    margin: 0 auto;         /* 위아래 여백은 0, 좌우는 알아서(auto) 채워 중앙 정렬 */
-    padding: 20px;          /* 브라우저 가장자리에 딱 붙지 않도록 안쪽 여백 추가 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
-/* 여행 앨범의 개별 카드 스타일링 (.trip-card) */
 .trip-card {
-    background-color: #ffffff;      /* 카드 배경은 깔끔한 흰색 */
-    border: 1px solid #e0e0e0;      /* 연한 회색 테두리 선 */
-    border-radius: 8px;             /* 모서리를 부드럽게 깎음 */
-    padding: 20px;                  /* 카드 내부 테두리와 콘텐츠 사이의 두툼한 여백 */
-    margin-bottom: 25px;            /* 카드와 카드 사이가 떨어지도록 바깥 아래 여백 추가 */
-    
-    /* 그림자 효과 효과 (선택 사항이지만 박스 모델의 입체감을 주기 좋습니다) */
+    background-color: #141414;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* 카드 내부의 이미지 조절 */
+/* 카드 내부 이미지 블록화 및 중앙 정렬 */
 .trip-card img {
-    display: block;                 /* 이미지를 블록화하여 아래 글씨와 자연스럽게 줄바꿈 */
-    margin-bottom: 12px;            /* 이미지와 아래 설명 글씨 사이의 여백 */
-    max-width: 100%;                /* 이미지가 부모 박스 밖으로 삐져나가지 않게 방지 */
+    display: block;
+    margin: 0 auto 12px auto;
+    max-width: 100%;
     height: auto;
 }
 
-/* 시간표 테이블 정돈 (myClass.html) */
+.vlog-media video {
+    display: block;
+    margin: 0 auto 12px auto;
+    width: 100%;                    
+    max-width: 400px;               
+    height: auto;                   
+}
 table {
-    width: 100%;                    /* 테이블이 부모 폭(800px)에 가득 차도록 설정 */
-    border-collapse: collapse;      /* HTML 특유의 겹치고 떨어져 있는 이중 테두리를 하나로 병합 */
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
 th, td {
-    border: 1px solid #dddddd;      /* 얇고 정돈된 테두리 */
-    padding: 12px;                  /* 셀 내부 여백을 늘려 쾌적하게 텍스트 배치 */
-    text-align: center;             /* 글자 중앙 정렬 */
+    border: 1px solid #676767;
+    padding: 12px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 th {
-    background-color: #f8f9fa;      /* 헤더 영역 배경색 지정을 통한 구분 */
+    background-color: #3f3f3f;
 }
 
 /* ==========================================================================
-   [미션 3] 가독성 높은 회원가입 폼
+   [미션 3] 회원가입 폼 스타일
    ========================================================================== */
-/* 그룹 상자(fieldset)와 제목(legend) 다듬기 */
 fieldset {
-    border: 1px solid #e0e0e0;      /* 딱딱한 검은 선을 연한 회색 실선으로 변경 */
-    border-radius: 6px;             /* 모서리를 둥글게 처리 */
-    padding: 20px;                  /* 그룹 상자 내부 여백을 두툼하게 설정 */
-    margin-bottom: 20px;            /* fieldset끼리 서로 겹치지 않게 바깥 여백 추가 */
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 legend {
-    font-weight: bold;              /* 그룹 제목은 두껍게 */
-    color: #2c3e50;                 /* 메인 남색 적용 */
-    padding: 0 10px;                /* 선과 글자가 붙지 않도록 좌우 여백 추가 */
+    font-weight: bold;
+    color: #2c3e50;
+    padding: 0 10px;
 }
 
-/* 텍스트 입력창, 비밀번호창, 셀렉트 박스 일괄 디자인 (태그 및 속성 선택자 활용) */
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
 select,
 textarea {
-    width: 100%;                    /* 입력창들을 부모 박스 가로 폭에 가득 차게 늘림 */
-    padding: 10px;                  /* 글자가 입력되는 내부 여백을 늘려 쾌적하게 만듦 */
-    margin-top: 5px;                /* label 글씨 바로 밑으로 내려오도록 위쪽 마진 추가 */
-    margin-bottom: 15px;            /* 다음 항목과의 간격 벌리기 */
-    border: 1px solid #cccccc;      /* 부드러운 테두리 선 */
-    border-radius: 4px;             /* 입력창 모서리 깎기 */
-    font-family: inherit;           /* body에 지정된 구글 폰트를 입력창 내부에도 상속 */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: inherit;
     font-size: 0.95em;
 }
 
-/* 라디오 버튼과 체크박스는 가로 폭 100%에서 제외 (중요!) */
 input[type="radio"],
 input[type="checkbox"] {
-    width: auto;                    /* 동그라미/네모 상자가 거대해지는 것을 방지 */
-    margin-right: 5px;              /* 우측 글씨와의 간격 확보 */
-    cursor: pointer;                /* 마우스를 올렸을 때 손가락 모양으로 변경 */
+    width: auto;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
-/* 자기소개창(textarea) 크기 고정 */
 textarea {
-    resize: vertical;               /* 사용자가 가로로 늘려서 레이아웃이 깨지는 것을 방지 (세로만 조절 가능) */
-    min-height: 120px;              /* 최소 높이 지정 */
+    resize: vertical;
+    min-height: 120px;
 }
 
-/* 버튼 공통 스타일링 */
 .btn-submit,
 .btn-reset {
-    padding: 12px 25px;             /* 버튼을 누르기 편하게 뚱뚱하게 만듦 */
+    padding: 12px 25px;
     font-size: 1em;
     font-weight: bold;
-    border: none;                   /* 기본 브라우저가 주는 투박한 테두리 제거 */
-    border-radius: 4px;             /* 모서리 둥글게 */
-    cursor: pointer;                /* 마우스 포인터 손가락 모양으로 */
-    margin-right: 10px;             /* 버튼끼리 떨어지도록 우측 간격 추가 */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-/* 회원가입 버튼 개별 스타일 (메인 포인터 컬러) */
 .btn-submit {
-    background-color: #000000;      /* 메인 청록색 배경 */
-    color: #ffffff;                 /* 글자색 흰색 */
+    background-color: #000000;
+    color: #ffffff;
 }
 
-/* 다시 작성 버튼 개별 스타일 (서브 회색 컬러) */
 .btn-reset {
-    background-color: #bdc3c7;      /* 차분한 회색 배경 */
+    background-color: #bdc3c7;
     color: #ffffff;
 }
 
 /* ==========================================================================
-   [미션 4] Flex와 Grid로 레이아웃 잡기
+   [미션 4 & 6] Flex / Grid 레이아웃 및 전환 효과
    ========================================================================== */
-/* Flexbox 활용: 가로 메뉴 바 및 부드러운 전환(Transition) */
 nav ul {
     display: flex;
     list-style: none;
     padding: 0;
-    gap: 20px;
+    gap: 25px;                       /* 상단 메뉴 버튼 간 간격 */
     justify-content: center;
 }
 
 nav a {
+    display: inline-block;          /* 겹침 방지를 위한 블록화 */
     color: #bcbcbc;
     text-decoration: none;
-    padding: 2px 20px;
+    padding: 6px 15px;
     font-weight: 700;
     transition: all 0.2s ease;
 }
@@ -213,159 +207,272 @@ nav a:hover {
     color: #ffffff;
 }
 
-/* Grid 활용: 여행지 앨범 3열 바둑판 배치 */
 .trip-grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 구조 */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
 .content-wrapper {
-    display: flex;      /* 가로 배치 선언 */
-    gap: 30px;          /* 본문과 사이드바 사이의 여백 */
-    align-items: flex-start; /* 두 영역의 높이가 달라도 디자인이 깨지지 않게 설정 */
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
 }
 
-/** Flexbox로 메인 콘텐츠와 사이드바를 나란히 배치하기 **/ 
 main {
-    flex: 7;            /* 전체 공간 중 70%만큼의 비율을 차지 */
+    flex: 7;
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.4); /* 반투명한 블랙 박스 */
+    background-color: rgba(0, 0, 0, 0.4);
     border: 1px solid #333333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 aside {
-    flex: 3;            /* 전체 공간 중 30%만큼의 비율을 차지 */
+    flex: 3;
     padding: 15px;
     border-radius: 6px;
-    background-color: rgba(20, 20, 20, 0.6); /* 사이드바는 조금 더 짙게 */
+    background-color: rgba(20, 20, 20, 0.6);
     border: 1px solid #333333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ==========================================================================
-   [미션 5] 반응형 미디어 쿼리 (스마트폰 및 태블릿 크기 화면)
-   ========================================================================== */
-/* 화면 가로 폭이 768px 이하(모바일 기기 수준)가 되면 아래 규칙들이 발동합니다. */
+/* [미션 5] 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
-    
-    /* 1. 메인 메뉴바를 가로 배치에서 세로 쌓기 구조로 변경 */
     nav ul {
         flex-direction: column;
         gap: 10px;
     }
     
-    /* 2. ★ 추가: 오늘의 주요소식(main)과 실시간 정보(aside)를 세로 1열로 정렬 */
     .content-wrapper {
-        flex-direction: column; /* 가로(row)로 나열되던 flex 아이템들을 세로(column)로 변경 */
+        flex-direction: column; 
         gap: 20px;
     }
 
-    /* 모바일에서는 본문과 사이드바가 둘 다 화면 꽉 차게 100% 폭을 쓰도록 유도 */
     main, aside {
         width: 100%;
     }
     
-    /* 3. 여행 앨범 3열 바둑판을 모바일에서는 1열(1fr)로 늘려서 시원하게 보여줌 */
     .trip-grid-container {
         grid-template-columns: 1fr;
     }
 }
 
-
-/* ==========================================================================
-   [미션 6] 부드러운 전환(Transitions) 및 등장 애니메이션(Animations)
-   ========================================================================== */
-/* [1-1] 메뉴 바 링크 호버 효과 */
+/* 애니메이션 및 모션 효과 */
 nav a {
-    /* 배경색과 글자색이 바뀔 때 0.3초 동안 부드럽게 스르륵 변하도록 설정 */
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding: 6px 12px;
     border-radius: 4px;
 }
 
 nav a:hover {
-    background-color: #000000;        /* 배경이 블랙으로 꽉 차고 */
-    color: #ffffff;                   /* 글자는 화이트로 반전 */
+    background-color: #000000;
+    color: #ffffff;
     text-decoration: none;
 }
 
-/* [1-2] 회원가입 및 다시작성 버튼 호버 효과 */
 .btn-submit,
 .btn-reset {
-    /* 모든 변경사항(배경색, 불투명도 등)을 0.2초간 부드럽게 처리 */
     transition: all 0.2s ease;
 }
 
-/* 회원가입 버튼에 마우스를 올리면 살짝 더 어두운 청록색으로 변경 */
 .btn-submit:hover {
     background-color: #828282;
 }
 
-/* 다시작성 버튼에 마우스를 올리면 살짝 더 어두운 회색으로 변경 */
 .btn-reset:hover {
     background-color: #95a5a6;
 }
 
-
-/* 2. 마우스 호버 시 둥실 떠오르는 효과 (Transform & Shadow) */
-
-/* 여행 앨범의 카드 스타일 수정 및 추가 */
 .trip-card {
-    /* 위치 변경(transform)과 그림자(box-shadow)가 변할 때 0.3초 동안 부드럽게 움직이도록 설정 */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 사용자가 여행 카드에 마우스를 올렸을 때(Hover) */
 .trip-card:hover {
-    transform: translateY(-8px);     /* 카드를 Y축(위쪽) 방향으로 8px만큼 들어 올림 */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 그림자를 더 넓고 진하게 하여 공중 붕 뜬 입체감 부여 */
+    transform: translateY(-8px);     
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
 }
 
-/* 3. 메인 페이지 웰컴 키프레임 애니메이션 (@keyframes) */
-
-/* [3-1] 아래에서 위로 부드럽게 페이드인 되는 애니메이션 설정 구조 정의 */
 @keyframes fadeInUp {
     from {
-        opacity: 0;                 /* 처음에는 투명하게 숨김 */
-        transform: translateY(20px); /* 원래 위치보다 20px 아래에서 시작 */
+        opacity: 0;                 
+        transform: translateY(20px); 
     }
     to {
-        opacity: 1;                 /* 선명하게 나타남 */
-        transform: translateY(0);    /* 제자리로 정착 */
+        opacity: 1;                 
+        transform: translateY(0);    
     }
 }
 
-/* [3-2] 정의한 fadeInUp 애니메이션을 index.html의 헤더 타이틀에 적용 */
 header h1 {
-    /* 애니메이션 이름 / 0.8초 동안 실행 / 부드럽게 끝남 / 애니메이션이 끝난 후 최종 상태(to) 유지 */
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* ==========================================================================
-   [No 미션] 그냥 자바스크립트 천국영역 예쁘게 꾸미기
-   ========================================================================== */
+/* 소개 페이지 리스트: 왼쪽 시작 선을 맞추면서 문단 전체는 가운데 정렬 */
+main ul, main ol {
+    display: inline-block;          /* 글자 무리 크기만큼만 상자 부피를 축소 */
+    text-align: left;               /* 글자와 기호의 시작 선을 왼쪽으로 칼정렬 */
+    padding-left: 20px;             /* 기호가 박스 밖으로 나가지 않도록 최소 여백 확보 */
+}
 
+
+/* ==========================================================================
+   커스텀 디자인 및 상단 버튼 절대 좌표 배치
+   ========================================================================== */
 aside section:last-child {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 버튼들을 정가운데로 정렬 */
+    align-items: center; 
     gap: 10px;
 }
 
 aside section:last-child button {
-    width: 37%;                 /* 가로 폭을 85%로 줄여서 좌우 여백 확보 */
+    width: 37%;                 
     padding: 10px;
     border: none;
-    border-radius: 0px;        /* 조약돌처럼 둥글고 귀여운 알약 모양 버튼 */
+    border-radius: 0px;        
     font-size: 0.9em;
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 은은한 그림자 추가 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
     transition: all 0.2s ease;
 }
 
-/* 마우스 올렸을 때 둥실 떠오르는 효과 */
 aside section:last-child button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.container header {
+    position: relative;
+    border: 1px solid #333333;       /* 라이트모드 전환 시 버튼 밀림 방지용 테두리 */
+}
+
+.container header .link-signup {
+    position: absolute;
+    right: 15px;                     /* 버튼 겹침 방지를 위한 가로 여백 확보 */
+    top: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #c5c5c5;
+    text-decoration: none;
+    border: 1px solid #848484;
+    border-radius: 4px;
+    background-color: #333333;
+}
+
+.container header .btn-toggle {
+    position: absolute;
+    right: 125px;                    /* 회원가입 버튼과 겹치지 않는 절대 간격 고정 */
+    top: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #c5c5c5;
+    border: 1px solid #848484;
+    border-radius: 4px;
+    background-color: #333333;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   라이트모드 테마 스타일 (레이아웃 배치 100% 유지 및 색상 반전)
+   ========================================================================== */
+body.light-mode {
+    background-color: #f7f6f0;       
+    color: #111111;                  
+    background-image: 
+        linear-gradient(rgba(247, 246, 240, 0.2), rgba(247, 246, 240, 0.2)), 
+        url('../media/bg_texture.jpg');
+}
+
+/* box-shadow를 활용해 물리적 두께 변화로 인한 공지사항 밀림 원천 차단 */
+body.light-mode header {
+    background-color: #e6ebf1;       
+    border: 1px solid transparent;   /* 다크모드 테두리와 크기 동기화 */
+    box-shadow: 0 0 0 1px #cbd5e1;   
+}
+
+body.light-mode nav {
+    background-color: #e6ebf1;       
+    border: 1px solid transparent;   /* 다크모드 구조와 물리적 높이 동기화 */
+    box-shadow: 0 0 0 1px #cbd5e1;   
+    margin-top: 0;                   /* 불필요한 마진 밀림 방지 */
+}
+
+/* 내부 자식 텍스트 가독성 확보 */
+body.light-mode main *,
+body.light-mode aside *,
+body.light-mode header *,
+body.light-mode nav *,
+body.light-mode p,
+body.light-mode span,
+body.light-mode figcaption {
+    color: #111111;
+}
+
+body.light-mode h1 {
+    border-bottom: 4px solid #111111;
+}
+body.light-mode h3 {
+    border-bottom: 2px solid #111111;
+}
+
+/* 상단 바로가기 메뉴 버튼 라이트모드 색상 반전 */
+body.light-mode nav a {
+    background-color: #ffffff;       
+    border: 1px solid #cbd5e1;
+}
+body.light-mode nav a:hover {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* 메인 콘텐츠 및 사이드바 영역 배경 */
+body.light-mode main {
+    background-color: #e6ebf1;       
+    border-color: #cbd5e1;
+}
+body.light-mode aside {
+    background-color: #cbd5e1;       
+    border-color: #94a3b8;
+}
+
+/* 가위바위보 영역 라이트모드 보정 */
+body.light-mode .rsp-box {
+    background-color: #ffffff !important; 
+    border: 1px solid #cbd5e1 !important;
+}
+body.light-mode #rsp-result {
+    color: #111111 !important;            
+}
+
+/* 여행 카드 및 시간표 테이블 영역 마감 */
+body.light-mode .trip-card {
+    background-color: #ffffff;       
+    border-color: #cbd5e1;
+}
+body.light-mode th {
+    background-color: #475569;      
+    color: #ffffff;                 
+}
+body.light-mode table th * {
+    color: #ffffff;                 
+}
+body.light-mode td {
+    border-color: #94a3b8;
+    background-color: #ffffff;      
+}
+
+/* 우측 상단 버튼 세트 위치 동기화 및 가독성 확보 */
+body.light-mode header .link-signup {
+    right: 15px; 
+    color: #111111;
+    border-color: #94a3b8;
+    background-color: #ffffff;
+}
+
+body.light-mode header .btn-toggle {
+    right: 125px; 
+    color: #111111;
+    border-color: #94a3b8;
+    background-color: #ffffff;
 }

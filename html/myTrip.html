@@ -1,37 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <title>나의 여행앨범</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 여행 앨범</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-    <h2>나의 여행 앨범</h2>
-    <audio controls>
-        <source src="../media/music.mp3" type="audio/mpeg">
-    </audio>
-    <hr>
-    <div class="trip-grid-container">
-        <p class="grid-card">
-            <img src="../media/IMG_1799.jpeg" style="width:320px;height:180px;">
-            <br>
-            몽골1</p>
-        <p class="grid-card">
-            <img src="../media/IMG_2085.jpeg" style="width:320px;height:180px;">
-            <br>
-            몽골2</p>
-        <p class="grid-card">
-            <img src="../media/IMG_2043.jpeg" style="width:320px;height:180px;">
-            <br>
-            몽골3</p>
+        <!-- 상단 헤더 영역 구조화 -->
+        <header>
+            <h1>🌍 나의 여행 앨범 </h1>
+            <audio controls>
+                <source src="../media/music.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </header>
+        
+        <hr>
+        
+        <!-- 메인 콘텐츠 영역 -->
+        <main>
+            <!-- 1. 몽골 여행 사진 그리드 섹션 -->
+            <section class="album-section">
+                <div class="trip-grid-container">
+                    <!-- 웹 표준 규격에 맞춰 p 태그를 div 박스로 변경 (클래스명 .trip-card 완벽 유지) -->
+                    <div class="trip-card">
+                        <img src="../media/IMG_1799.jpeg" width="400" height="200" alt="몽골 테를지 국립공원">
+                        <p>몽골 테를지의 노을</p>
+                    </div>
+                    
+                    <div class="trip-card">
+                        <img src="../media/IMG_2085.jpeg" width="400" height="200" alt="몽골 대초원">
+                        <p>끝없는 초원을 함께 달린 말</p>
+                    </div>
+                    
+                    <div class="trip-card">
+                        <img src="../media/IMG_2043.jpeg" width="400" height="200" alt="몽골 게르 숙소">
+                        <p>몽골 투어의 상징 푸르공</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr>
+            
+            <!-- 2. 몽골 브이로그 동영상 섹션 -->
+            <section class="vlog-section">
+                <h2>📹 나의 여행 브이로그</h2>
+                <!-- 단순 텍스트+br 구조를 미디어 전용 figure/figcaption 세트로 변경 -->
+                <figure class="vlog-media">
+                    <!-- 교수님 템플릿의 비디오 크기 규격 적용, 자연스러운 재생 옵션 유지 -->
+                    <video width="400" height="225" controls autoplay muted loop>
+                        <source src="../media/IMG_1656.MOV" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <!-- 덩그러니 있던 '말' 텍스트를 세련된 설명으로 정돈 -->
+                    <figcaption>대초원을 자유롭게 달리는 몽골의 말 🐎</figcaption>
+                </figure>
+            </section>
+        </main>
+        
     </div>
-    <hr>
-    <h4>나의 여행 브이로그</h4>
-    <p>
-        <video width="320" height="180" controls autoplay muted loop>
-        <source src="../media/IMG_1656.MOV" type="video/mp4">
-        동영상 지원X
-    </video><br>말
-    </p>
-    </div>
+    <script src="../script/theme.js"></script>
 </body>
 </html>

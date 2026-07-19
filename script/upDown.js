@@ -1,7 +1,3 @@
-// ==========================================================================
-// [수정버전] 버튼을 눌러야 시작하는 업다운 게임
-// ==========================================================================
-
 // HTML에서 onclick="startGame()"을 호출하면 이 상자 안의 코드가 비로소 실행됩니다.
 function startGame() {
 
@@ -14,14 +10,25 @@ function startGame() {
 
     // 2. 본격적인 게임 무한 루프 시작
     while (true) {
-        var userGuess = Number(prompt("1부터 100 사이의 숫자 중 컴퓨터가 생각한 숫자는 무엇일까요?"));
+        // prompt 창의 입력값을 문자열 그대로 먼저 받습니다.
+        var userInput = prompt("1부터 100 사이의 숫자 중 컴퓨터가 생각한 숫자는 무엇일까요?");
         
-        // 사용자가 취소 버튼을 누르거나 창을 닫으면 게임을 즉시 종료하는 예외 처리 방어코드
-        if (userGuess === 0) {
+        // [해결] 취소 버튼을 누르거나 창을 닫았을 때만 정확히 0이 아닌 null로 걸러냅니다.
+        if (userInput === null) {
             alert("게임이 취소되었습니다.");
             break;
         }
 
+        // 취소가 아님이 확인되면 그때 숫자로 변환합니다.
+        var userGuess = Number(userInput);
+
+        // 문자를 입력했거나 빈 칸으로 확인을 누른 경우 방어
+        if (isNaN(userGuess) || userInput.trim() === "") {
+            alert("⚠️ 올바른 숫자를 입력하지 않으셨습니다. 다시 시도해 주세요.");
+            continue; 
+        }
+
+        // 정상적인 숫자 입력 시에만 도전 횟수 증가
         count = count + 1;
 
         if (userGuess === computerNum) {
@@ -31,11 +38,9 @@ function startGame() {
         } else if (userGuess > computerNum) {
             alert("🔽 Down! 더 작은 숫자를 입력해 보세요. (현재 " + count + "회 도전 중)");
             
-        } else if (userGuess < computerNum) {
-            alert("🔼 Up! 더 큰 숫자를 입력해 보세요. (현재 " + count + "회 도전 중)");
-            
         } else {
-            alert("⚠️ 올바른 숫자를 입력하지 않으셨습니다. 다시 시도해 주세요.");
+            // 문자와 큰 숫자가 다 걸러졌으므로 작은 숫자(Up) 케이스만 남음
+            alert("🔼 Up! 더 큰 숫자를 입력해 보세요. (현재 " + count + "회 도전 중)");
         }
     }
 }
